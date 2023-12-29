@@ -10,7 +10,7 @@ const Page = () => {
     createLogoSession().then(setSession)
   }, [])
 
-  return <ReportConfig session={session} height={`calc(100vh - ${HEIGHT_OFFSET}px)`} />
+  return <ReportConfig session={session} height={`calc(100vh - ${HEIGHT_OFFSET}px)`} hideTenantInfoConfig />
 }
 
 export default Page

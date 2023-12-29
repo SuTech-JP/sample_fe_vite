@@ -14,7 +14,7 @@ const Page = () => {
     createDesignerEditSession(params.layoutId).then(setSession)
   }, [params.layoutId])
 
-  const onBack = () => navigate('../gallery')
+  const onBack = () => navigate('../../gallery')
   return <ReportDesigner session={session} onBack={onBack} height={`calc(100vh - ${HEIGHT_OFFSET}px)`} />
 }
 

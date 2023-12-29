@@ -21,6 +21,8 @@ const Page = () => {
     navigate('../gallery')
   }
 
+  const onCancel = () => navigate('../gallery')
+
   if (!params.layoutId) return <></>
   return (
     <DataTravelerImport
@@ -29,6 +31,7 @@ const Page = () => {
       application={APPLICATION}
       schema={SCHEMA}
       onImport={onImport}
+      onCancel={onCancel}
       height={height - HEIGHT_OFFSET}
     />
   )
