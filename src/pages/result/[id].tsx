@@ -4,6 +4,7 @@ import { getResult, Result } from '../../api'
 
 const Page = () => {
   const [result , setResult] = useState<Result>()
+  const [counter , setCounter] = useState<number>(0)
   const params = useParams()
 
   useEffect(()=>{
@@ -12,17 +13,17 @@ const Page = () => {
         setResult(r)
       })
     }
-  },[params.id])
+  },[params.id,counter])
 
   if (!result?.id) return <></>
-  console.log(result)
   return (
     <>
       <>id:</><>{result.id}</><br/>
       <>status:</><>{result.status}</><br/>
-      {result.details.map((d)=>(
+      {result.details?.map((d)=>(
           <><a key={d.dataId} href={d.pdfUrl} type="application/pdf" >{d.dataId}</a><br/></>
       ))}
+      <input type={"button"} onClick={()=>{setResult(undefined);setCounter(counter+1)}} value={"更新"} />
     </>
   )
 

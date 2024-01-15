@@ -18,7 +18,7 @@ const Page = () => {
   const onImport = (result: DataTravelerResult) => {
     // TODO result.dataImportLogIdを保存し、任意の画面に遷移する
     console.log(result)
-    navigate(`../result/${result.dataImportLogId}`)
+    navigate(`../../result/${result.dataImportLogId}`)
   }
 
   const onCancel = () => navigate('../gallery')
