@@ -9,6 +9,7 @@ import DesignerNewPage from './pages/designer/new.tsx'
 import DesignerEditPage from './pages/designer/edit/[layoutId].tsx'
 import DictionaryPage from './pages/dictionary/index.tsx'
 import LogoPage from './pages/logo/index.tsx'
+import ResultPage from './pages/result/[id].tsx'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -25,6 +26,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path="import">
           <Route path="gallery" element={<ImportGalleryPage />} />
           <Route path=":layoutId" element={<ImportPage />} />
+        </Route>
+        <Route path="result">
+          <Route path=":id" element={<ResultPage />} />
         </Route>
         <Route path="dictionary" element={<DictionaryPage />} />
         <Route path="logo" element={<LogoPage />} />

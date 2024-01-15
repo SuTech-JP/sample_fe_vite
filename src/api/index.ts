@@ -46,3 +46,19 @@ const createRaasSession = async (msa: 'datatraveler' | 'report', subUrl: string)
     }),
   }).then((res) => res.json())
 }
+
+export const getResult = async (dataImportId: string): Promise<Result> => {
+  return await fetch(BACKEND_URL + `/raas/report/result/${dataImportId}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }).then((res) => res.json())
+}
+
+export type Result = {
+  id : string
+  status : string
+
+  details : { dataId : string ,pdfUrl:string}[]
+}
