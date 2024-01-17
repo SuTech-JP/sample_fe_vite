@@ -6,7 +6,10 @@ function App() {
       <h1>Vite + React + TS Raas Sample</h1>
       <ul>
         <li>
-          <Link to="/import/gallery">インポート</Link>
+          <Link to="/import/gallery">インポート(ギャラリー)</Link>
+        </li>
+        <li>
+          <Link to="/import/select">インポート(Select)</Link>
         </li>
         <li>
           <Link to="/designer/gallery">レイアウト設定</Link>

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import App from './App.tsx'
 import ImportGalleryPage from './pages/import/gallery.tsx'
+import ImportSelectLayoutsPage from './pages/import/select.tsx'
 import ImportPage from './pages/import/[layoutId].tsx'
 import DesignerGalleryPage from './pages/designer/gallery.tsx'
 import DesignerNewPage from './pages/designer/new.tsx'
@@ -25,6 +26,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         </Route>
         <Route path="import">
           <Route path="gallery" element={<ImportGalleryPage />} />
+          <Route path="select" element={<ImportSelectLayoutsPage />} />
           <Route path=":layoutId" element={<ImportPage />} />
         </Route>
         <Route path="result">

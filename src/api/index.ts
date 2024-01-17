@@ -56,9 +56,20 @@ export const getResult = async (dataImportId: string): Promise<Result> => {
   }).then((res) => res.json())
 }
 
-export type Result = {
-  id : string
-  status : string
+export type RptLayout = { id: number; name: string }
 
-  details : { dataId : string ,pdfUrl:string}[]
+export const getRaasLayouts = async (application: string, schema: string): Promise<RptLayout[]> => {
+  return await fetch(BACKEND_URL + `/raas/report/layout/${application}/${schema}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }).then((res) => res.json())
+}
+
+export type Result = {
+  id: string
+  status: string
+
+  details: { dataId: string; pdfUrl: string }[]
 }
