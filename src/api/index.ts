@@ -73,3 +73,47 @@ export type Result = {
 
   details: { dataId: string; pdfUrl: string }[]
 }
+
+export type MockPartner = {
+  code: string
+  name: string
+  zipcode: string
+  address1: string
+  address2: string
+  address3: string
+}
+
+export const loadMockPartners = async (): Promise<MockPartner[]> => {
+  // 本来はバックエンドから取得する
+  return [
+    {
+      code: 'sample_code',
+      name: 'sample_name',
+      zipcode: 'sample_zipcode',
+      address1: 'sample_address1',
+      address2: 'sample_address2',
+      address3: 'sample_address3',
+    },
+  ]
+}
+
+export type MockCompany = {
+  code: string
+  name: string
+  zipcode: string
+  address1: string
+  address2: string
+  address3: string
+}
+
+export const loadMockCompany = async (): Promise<MockCompany> => {
+  // 本来はバックエンドから取得する
+  return {
+    code: 'sample_code',
+    name: 'sample_name',
+    zipcode: 'sample_zipcode',
+    address1: 'sample_address1',
+    address2: 'sample_address2',
+    address3: 'sample_address3',
+  }
+}
