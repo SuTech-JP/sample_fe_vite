@@ -4,6 +4,7 @@ import { MockCompany, MockPartner, createImportSession, loadMockCompany, loadMoc
 import { useNavigate, useParams } from 'react-router-dom'
 import { APPLICATION, HEIGHT_OFFSET, SCHEMA } from '../../constants'
 import { useWindowSize } from '../../hooks/useWindowSize'
+import { customStyles } from '../../themes/customTheme'
 
 const Page = () => {
   const params = useParams()
@@ -42,6 +43,7 @@ const Page = () => {
       onImport={onImport}
       onCancel={onCancel}
       height={height - HEIGHT_OFFSET}
+      customStyles={customStyles}
     />
   )
 }
