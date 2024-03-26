@@ -40,6 +40,14 @@ const Page = () => {
       schema={SCHEMA}
       mapper={{ sample_partners: partners }}
       binder={{ sample_company: company }}
+      extensionSchemaDef={{
+        container: { property: 'exntesionFields', caption: '請求書拡張項目' },
+        properties: [
+          { type: 'text', property: 'extText01', caption: '拡張文字01' },
+          { type: 'number', property: 'extNumber01', caption: '拡張数値01' },
+          { type: 'date', property: 'extDate01', caption: '拡張日付01' },
+        ],
+      }}
       onImport={onImport}
       onCancel={onCancel}
       height={height - HEIGHT_OFFSET}
