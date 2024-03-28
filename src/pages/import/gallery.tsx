@@ -24,6 +24,7 @@ const Page = () => {
       onSelectLayout={onSelectLayout}
       height={`calc(100vh - ${HEIGHT_OFFSET}px)`}
       customStyles={customStyles}
+      mode={'operation'}
     />
   )
 }
