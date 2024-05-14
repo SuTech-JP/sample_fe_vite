@@ -22,6 +22,10 @@ export const createDictionarySession = async (): Promise<Session> => {
   return await createReportSession(`/tenantInfo`)
 }
 
+export const createOrganizerSession = async (application: string, schema: string): Promise<Session> => {
+  return await createReportSession(`/organizer/${application}/${schema}`)
+}
+
 export const createLogoSession = async (): Promise<Session> => {
   return await createReportSession(`/config`)
 }
