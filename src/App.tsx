@@ -15,6 +15,9 @@ function App() {
           <Link to="/designer/gallery">レイアウト設定</Link>
         </li>
         <li>
+          <Link to="/organizer">PDF分割</Link>
+        </li>
+        <li>
           <Link to="/dictionary">ユーザー辞書</Link>
         </li>
         <li>
