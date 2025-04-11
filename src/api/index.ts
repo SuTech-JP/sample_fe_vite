@@ -2,6 +2,15 @@ import { Session } from '@sutech-jp/raas-react-client'
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
 
+export const deleteTenant = async () => {
+  await fetch(BACKEND_URL + `/raas/tenant/delete`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+}
+
 export const createImportSession = async (): Promise<Session> => {
   return await createDataTravelerSession(`/import`)
 }
