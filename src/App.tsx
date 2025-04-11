@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { deleteTenant } from './api'
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
         </li>
         <li>
           <Link to="/logo">ロゴ・社印</Link>
+        </li>
+        <li>
+          <button onClick={deleteTenant}>テナント削除</button>
         </li>
       </ul>
     </>
