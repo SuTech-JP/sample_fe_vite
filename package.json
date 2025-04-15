@@ -14,7 +14,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.1",
     "@sutech-jp/raas-react-client": "0.1.20",
-    "@sutech-jp/datatraveler-react-client": "0.1.15"
+    "@sutech-jp/datatraveler-react-client": "0.1.17"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
