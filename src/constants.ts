@@ -1,4 +1,4 @@
-export const APPLICATION = 'tutorial'
+export const APPLICATION = 'sample'
 export const SCHEMA = 'invoice'
 export const HEIGHT_OFFSET = 25
 
