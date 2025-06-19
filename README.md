@@ -8,17 +8,13 @@ React(Vite)向け Frontend ソースのサンプルです
 
 .env.sample をコピーして、.env ファイルを作成し BACKEND の URL を記述する
 
-### 1.2 PAT の登録
-
-GitHub アカウントの Personal Access Token(Classic)を発行し、環境変数 GITHUB_TOKEN として登録する
-
-### 1.3 依存ライブラリを取得する
+### 1.2 依存ライブラリを取得する
 
 ```
 npm install
 ```
 
-### 1.4 npm で run する
+### 1.3 npm で run する
 
 ```
 npm run dev
@@ -33,8 +29,8 @@ npm run dev
 package.json の dependencies に以下を追加
 
 ```json
-"@sutech-jp/raas-react-client": "0.1.20",
-"@sutech-jp/datatraveler-react-client": "0.1.14"
+"@sutech_jp/raas-react-client": "0.1.26",
+"@sutech_jp/datatraveler-react-client": "0.1.22"
 ```
 
 npm もしくは yarn で install を実行

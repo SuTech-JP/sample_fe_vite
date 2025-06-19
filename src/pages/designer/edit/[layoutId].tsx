@@ -1,4 +1,4 @@
-import { ReportDesigner, Session } from '@sutech-jp/raas-react-client'
+import { ReportDesigner, Session } from '@sutech_jp/raas-react-client'
 import { useEffect, useState } from 'react'
 import { createDesignerEditSession } from '../../../api'
 import { useNavigate, useParams } from 'react-router-dom'

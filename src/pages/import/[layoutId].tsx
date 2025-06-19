@@ -1,4 +1,4 @@
-import { DataTravelerImport, DataTravelerResult, MapperDef, Session } from '@sutech-jp/datatraveler-react-client'
+import { DataTravelerImport, DataTravelerResult, MapperDef, Session } from '@sutech_jp/datatraveler-react-client'
 import { useEffect, useState } from 'react'
 import { MockCompany, MockPartner, createImportSession, loadMockCompany, loadMockPartners } from '../../api'
 import { useNavigate, useParams } from 'react-router-dom'

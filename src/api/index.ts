@@ -1,4 +1,4 @@
-import { Session } from '@sutech-jp/raas-react-client'
+import { Session } from '@sutech_jp/raas-react-client'
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
 
