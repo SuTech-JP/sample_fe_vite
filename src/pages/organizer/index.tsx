@@ -1,4 +1,4 @@
-import { ReportOrganizer, Session } from '@sutech-jp/raas-react-client'
+import { ReportOrganizer, Session } from '@sutech_jp/raas-react-client'
 import { useEffect, useState } from 'react'
 import { createOrganizerSession } from '../../api'
 import { ORGANIZER_APPLICATION, HEIGHT_OFFSET, ORGANIZER_SCHEMA } from '../../constants'

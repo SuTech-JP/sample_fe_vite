@@ -1,4 +1,4 @@
-import { ReportTenantInfo, Session } from '@sutech-jp/raas-react-client'
+import { ReportTenantInfo, Session } from '@sutech_jp/raas-react-client'
 import { useEffect, useState } from 'react'
 import { createDictionarySession } from '../../api'
 import { HEIGHT_OFFSET } from '../../constants'

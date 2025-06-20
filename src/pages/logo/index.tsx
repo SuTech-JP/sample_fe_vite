@@ -1,4 +1,4 @@
-import { ReportConfig, Session } from '@sutech-jp/raas-react-client'
+import { ReportConfig, Session } from '@sutech_jp/raas-react-client'
 import { useEffect, useState } from 'react'
 import { createLogoSession } from '../../api'
 import { HEIGHT_OFFSET } from '../../constants'

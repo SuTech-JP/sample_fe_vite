@@ -1,4 +1,4 @@
-import { ThemeOptions } from "@sutech-jp/raas-react-client";
+import { ThemeOptions } from "@sutech_jp/raas-react-client";
 
 /**
  * Theme options that can be applied to RaaS components as "Custom Styles".

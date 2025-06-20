@@ -1,4 +1,4 @@
-import { ReportLayoutGallery, Session } from '@sutech-jp/raas-react-client'
+import { ReportLayoutGallery, Session } from '@sutech_jp/raas-react-client'
 import { useEffect, useState } from 'react'
 import { createGallerySession } from '../../api'
 import { APPLICATION, HEIGHT_OFFSET, SCHEMA } from '../../constants'
