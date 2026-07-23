@@ -83,6 +83,7 @@ export const getRaasLayouts = async (application: string, schema: string): Promi
 export type Result = {
   id: string
   status: string
+  phase: string
 
   details: { dataId: string; pdfUrl: string }[]
 }

@@ -5,6 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { APPLICATION, HEIGHT_OFFSET, SCHEMA } from '../../constants'
 import { useWindowSize } from '../../hooks/useWindowSize'
 import { customStyles } from '../../themes/customTheme'
+import Loading from '../../components/Loading'
 
 const Page = () => {
   const params = useParams()
@@ -30,8 +31,7 @@ const Page = () => {
   const onCancel = () => navigate('../gallery')
 
   if (!params.layoutId) return <></>
-  if (!partners) return <></>
-  if (!company) return <></>
+  if (!session || !partners || !company) return <Loading />
   return (
     <DataTravelerImport
       session={session}

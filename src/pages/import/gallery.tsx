@@ -4,6 +4,7 @@ import { createGallerySession } from '../../api'
 import { APPLICATION, HEIGHT_OFFSET, SCHEMA } from '../../constants'
 import { useNavigate } from 'react-router-dom'
 import { customStyles } from '../../themes/customTheme'
+import Loading from '../../components/Loading'
 
 const Page = () => {
   const navigate = useNavigate()
@@ -18,6 +19,7 @@ const Page = () => {
     navigate(`../${layoutId}`)
   }
 
+  if (!session) return <Loading />
   return (
     <ReportLayoutGallery
       session={session}

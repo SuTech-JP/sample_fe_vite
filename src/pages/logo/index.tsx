@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { createLogoSession } from '../../api'
 import { HEIGHT_OFFSET } from '../../constants'
 import { customStyles } from '../../themes/customTheme'
+import Loading from '../../components/Loading'
 
 const Page = () => {
   const [session, setSession] = useState<Session>()
@@ -11,6 +12,7 @@ const Page = () => {
     createLogoSession().then(setSession)
   }, [])
 
+  if (!session) return <Loading />
   return (
     <ReportConfig
       session={session}
