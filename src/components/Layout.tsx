@@ -1,16 +1,19 @@
 import { Link, Outlet } from 'react-router-dom'
-import { HEIGHT_OFFSET } from '../constants'
+import { HEADER_HEIGHT, PAGE_MARGIN } from '../constants'
 
-// ヘッダーの高さは HEIGHT_OFFSET と一致させ、各ページの SDK コンポーネントが画面内に収まるようにする
+// ヘッダー高さと余白は HEIGHT_OFFSET の計算（constants.ts）と連動しており、
+// 各ページの SDK コンポーネントが画面内に収まるようになっている
 const Layout = () => {
   return (
     <>
-      <header className="app-header" style={{ height: HEIGHT_OFFSET }}>
+      <header className="app-header" style={{ height: HEADER_HEIGHT }}>
         <Link to="/" className="app-header-brand">
-          Vite + React + TS RaaS Sample
+          RaaS Frontend Sample
         </Link>
       </header>
-      <Outlet />
+      <div style={{ padding: PAGE_MARGIN }}>
+        <Outlet />
+      </div>
     </>
   )
 }

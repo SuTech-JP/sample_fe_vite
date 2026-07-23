@@ -13,7 +13,7 @@ const menus = [
 function App() {
   return (
     <main className="home">
-      <h1>Vite + React + TS RaaS Sample</h1>
+      <h1>RaaS Frontend Sample</h1>
       <ul className="home-menu">
         {menus.map((menu) => (
           <li key={menu.to}>

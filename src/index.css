@@ -60,7 +60,7 @@ body {
 .home {
   max-width: 720px;
   margin: 0 auto;
-  padding: 24px 16px;
+  padding: 8px 0;
 }
 
 .home h1 {
@@ -125,7 +125,7 @@ body {
   gap: 8px;
   max-width: 720px;
   margin: 0 auto;
-  padding: 24px 16px;
+  padding: 8px 0;
   font-size: 0.875rem;
 }
 
@@ -141,7 +141,7 @@ body {
 .result {
   max-width: 720px;
   margin: 0 auto;
-  padding: 24px 16px;
+  padding: 8px 0;
 }
 
 .result h1 {
