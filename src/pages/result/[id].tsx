@@ -36,7 +36,7 @@ const Page = () => {
         <ul className="result-pdf-list">
           {result.details?.map((d) => (
             <li key={d.dataId}>
-              <a href={d.pdfUrl} type="application/pdf">
+              <a href={d.pdfUrl} type="application/pdf" target="_blank" rel="noreferrer">
                 {d.dataId}
               </a>
             </li>
