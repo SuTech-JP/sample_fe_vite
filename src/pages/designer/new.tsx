@@ -4,6 +4,7 @@ import { createDesignerNewSession } from '../../api'
 import { APPLICATION, HEIGHT_OFFSET, SCHEMA } from '../../constants'
 import { useNavigate } from 'react-router-dom'
 import { customStyles } from '../../themes/customTheme'
+import Loading from '../../components/Loading'
 
 const Page = () => {
   const navigate = useNavigate()
@@ -14,6 +15,7 @@ const Page = () => {
   }, [])
 
   const onBack = () => navigate('../gallery')
+  if (!session) return <Loading />
   return (
     <ReportDesigner
       session={session}

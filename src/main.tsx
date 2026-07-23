@@ -1,6 +1,7 @@
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import App from './App.tsx'
+import Layout from './components/Layout.tsx'
 import ImportGalleryPage from './pages/import/gallery.tsx'
 import ImportSelectLayoutsPage from './pages/import/select.tsx'
 import ImportPage from './pages/import/[layoutId].tsx'
@@ -16,25 +17,27 @@ import './index.css'
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
     <Routes>
-      <Route path="designer">
-        <Route path="gallery" element={<DesignerGalleryPage />} />
-        <Route path="new" element={<DesignerNewPage />} />
-        <Route path="edit">
-          <Route path=":layoutId" element={<DesignerEditPage />} />
+      <Route element={<Layout />}>
+        <Route path="designer">
+          <Route path="gallery" element={<DesignerGalleryPage />} />
+          <Route path="new" element={<DesignerNewPage />} />
+          <Route path="edit">
+            <Route path=":layoutId" element={<DesignerEditPage />} />
+          </Route>
         </Route>
+        <Route path="import">
+          <Route path="gallery" element={<ImportGalleryPage />} />
+          <Route path="select" element={<ImportSelectLayoutsPage />} />
+          <Route path=":layoutId" element={<ImportPage />} />
+        </Route>
+        <Route path="result">
+          <Route path=":id" element={<ResultPage />} />
+        </Route>
+        <Route path="organizer" element={<OrganizerPage />} />
+        <Route path="dictionary" element={<DictionaryPage />} />
+        <Route path="logo" element={<LogoPage />} />
+        <Route path="" element={<App />} />
       </Route>
-      <Route path="import">
-        <Route path="gallery" element={<ImportGalleryPage />} />
-        <Route path="select" element={<ImportSelectLayoutsPage />} />
-        <Route path=":layoutId" element={<ImportPage />} />
-      </Route>
-      <Route path="result">
-        <Route path=":id" element={<ResultPage />} />
-      </Route>
-      <Route path="organizer" element={<OrganizerPage />} />
-      <Route path="dictionary" element={<DictionaryPage />} />
-      <Route path="logo" element={<LogoPage />} />
-      <Route path="" element={<App />} />
     </Routes>
   </BrowserRouter>
 )

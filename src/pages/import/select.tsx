@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { RptLayout, getRaasLayouts } from '../../api'
 import { APPLICATION, SCHEMA } from '../../constants'
 import { useNavigate } from 'react-router-dom'
+import Loading from '../../components/Loading'
 
 const Page = () => {
   const navigate = useNavigate()
@@ -16,22 +17,23 @@ const Page = () => {
     navigate(`../${layoutId}`)
   }
 
-  if (!layouts) return <></>
+  if (!layouts) return <Loading />
 
   return (
-    <>
+    <main className="layout-select">
+      <label htmlFor="layout-select">インポートに使用するレイアウトを選択してください</label>
       <select
+        id="layout-select"
         onChange={(e: React.ChangeEvent<HTMLSelectElement>) => onSelectLayout(Number(e.target.value))}
-        style={{ width: '300px', margin: '8px' }}
       >
-        <option></option>
+        <option value="">-- レイアウトを選択 --</option>
         {layouts.map((layout) => (
           <option key={layout.id} value={layout.id}>
             {layout.name}
           </option>
         ))}
       </select>
-    </>
+    </main>
   )
 }
 
