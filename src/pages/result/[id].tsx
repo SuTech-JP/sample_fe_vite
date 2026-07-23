@@ -9,8 +9,9 @@ const Page = () => {
   const [result, setResult] = useState<Result>()
   const params = useParams()
 
-  // ステータスが FINISH になるまで一定間隔で自動再取得する（作成中は ONGOING）
-  const completed = result?.status === 'FINISH'
+  // データ取込（DATA_PARSE）完了後に PDF 生成（PDF_GENERATE）が走り status が再び ONGOING に戻るため、
+  // phase と status の組み合わせで完了を判定する
+  const completed = result?.phase === 'PDF_GENERATE' && result?.status === 'FINISH'
 
   useEffect(() => {
     const id = params.id
