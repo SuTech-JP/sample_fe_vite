@@ -29,8 +29,8 @@ npm run dev
 package.json の dependencies に以下を追加
 
 ```json
-"@sutech_jp/raas-react-client": "0.1.26",
-"@sutech_jp/datatraveler-react-client": "0.1.22"
+"@sutech_jp/raas-react-client": "0.1.59",
+"@sutech_jp/datatraveler-react-client": "0.1.36"
 ```
 
 npm もしくは yarn で install を実行
