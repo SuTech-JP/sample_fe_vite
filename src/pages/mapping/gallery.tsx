@@ -1,0 +1,34 @@
+import { ReportLayoutGallery, Session } from '@sutech_jp/raas-react-client'
+import { useEffect, useState } from 'react'
+import { createGallerySession } from '../../api'
+import { APPLICATION, HEIGHT_OFFSET, SCHEMA } from '../../constants'
+import { useNavigate } from 'react-router-dom'
+import { customStyles } from '../../themes/customTheme'
+import Loading from '../../components/Loading'
+
+const Page = () => {
+  const navigate = useNavigate()
+  const [session, setSession] = useState<Session>()
+
+  useEffect(() => {
+    createGallerySession(APPLICATION, SCHEMA).then(setSession)
+  }, [])
+
+  const onSelectLayout = (layoutId: number | undefined) => {
+    if (!layoutId) return
+    navigate(`../${layoutId}`)
+  }
+
+  if (!session) return <Loading />
+  return (
+    <ReportLayoutGallery
+      session={session}
+      onSelectLayout={onSelectLayout}
+      height={`calc(100vh - ${HEIGHT_OFFSET}px)`}
+      customStyles={customStyles}
+      mode={'operation'}
+    />
+  )
+}
+
+export default Page

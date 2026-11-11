@@ -15,6 +15,11 @@ export const createImportSession = async (): Promise<Session> => {
   return await createDataTravelerSession(`/import`)
 }
 
+// マッピング定義画面（DataTravelerMapping）用のセッション
+export const createMappingSession = async (): Promise<Session> => {
+  return await createDataTravelerSession(`/mapping`)
+}
+
 export const createGallerySession = async (application: string, schema: string): Promise<Session> => {
   return await createReportSession(`/gallery/${application}/${schema}`)
 }

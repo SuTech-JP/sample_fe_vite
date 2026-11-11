@@ -5,6 +5,8 @@ import Layout from './components/Layout.tsx'
 import ImportGalleryPage from './pages/import/gallery.tsx'
 import ImportSelectLayoutsPage from './pages/import/select.tsx'
 import ImportPage from './pages/import/[layoutId].tsx'
+import MappingGalleryPage from './pages/mapping/gallery.tsx'
+import MappingPage from './pages/mapping/[layoutId].tsx'
 import DesignerGalleryPage from './pages/designer/gallery.tsx'
 import DesignerNewPage from './pages/designer/new.tsx'
 import DesignerEditPage from './pages/designer/edit/[layoutId].tsx'
@@ -29,6 +31,10 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <Route path="gallery" element={<ImportGalleryPage />} />
           <Route path="select" element={<ImportSelectLayoutsPage />} />
           <Route path=":layoutId" element={<ImportPage />} />
+        </Route>
+        <Route path="mapping">
+          <Route path="gallery" element={<MappingGalleryPage />} />
+          <Route path=":layoutId" element={<MappingPage />} />
         </Route>
         <Route path="result">
           <Route path=":id" element={<ResultPage />} />
