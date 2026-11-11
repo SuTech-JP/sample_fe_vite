@@ -194,3 +194,8 @@ iframe {
   color: var(--color-text-sub);
   font-size: 0.875rem;
 }
+
+.mapping-saved {
+  margin: 0 0 8px;
+  font-size: 14px;
+}

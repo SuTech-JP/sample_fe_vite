@@ -4,6 +4,11 @@ import { deleteTenant } from './api'
 const menus = [
   { to: '/import/gallery', title: 'インポート（ギャラリー）', description: 'ギャラリーからレイアウトを選択してデータをインポートします' },
   { to: '/import/select', title: 'インポート（Select）', description: 'セレクトボックスでレイアウトを選択してデータをインポートします' },
+  {
+    to: '/mapping/gallery',
+    title: 'マッピング定義',
+    description: 'ギャラリーからレイアウトを選択して、データを取り込まずにマッピング定義だけを作成・編集します',
+  },
   { to: '/designer/gallery', title: 'レイアウト設定', description: '帳票レイアウトの作成・編集・削除を行います' },
   { to: '/organizer', title: 'PDF分割', description: 'PDFの分割設定を行います' },
   { to: '/dictionary', title: 'ユーザー辞書', description: 'ユーザー辞書を管理します' },

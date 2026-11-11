@@ -1,0 +1,98 @@
+import {
+  DataTravelerMapping,
+  MappingSampleData,
+  MapperMatchingSettingDef,
+  SavedMappingDefinition,
+  Session,
+} from '@sutech_jp/datatraveler-react-client'
+import { useEffect, useState } from 'react'
+import { createMappingSession } from '../../api'
+import { useNavigate, useParams } from 'react-router-dom'
+import { APPLICATION, HEIGHT_OFFSET, SCHEMA } from '../../constants'
+import { useWindowSize } from '../../hooks/useWindowSize'
+import { sampleCompanyMapperDef, samplePartnersMapperDef } from '../../masters'
+import { customStyles } from '../../themes/customTheme'
+import Loading from '../../components/Loading'
+
+// マッピング元の列と、画面に表示する値の例。
+// 取込 API（POST /datatraveler/import/api）に JSON（fileType: 'json'）で渡す業務データと同じ形にする。
+// 列は 1 行目のキーで決まるので、すべての行に全列のキーを入れる（値が無い列は空文字）
+const sampleData: MappingSampleData = [
+  {
+    請求番号: 'INV-0001',
+    取引先コード: 'sample_code',
+    取引先名: 'sample_name',
+    請求日: '2026/10/31',
+    支払期日: '2026/11/30',
+    品目名: '保守費用',
+    数量: '1',
+    単価: '100000',
+    金額: '100000',
+    備考: '10月分',
+  },
+  {
+    請求番号: 'INV-0001',
+    取引先コード: 'sample_code',
+    取引先名: 'sample_name',
+    請求日: '2026/10/31',
+    支払期日: '2026/11/30',
+    品目名: '書籍',
+    数量: '2',
+    単価: '2500',
+    金額: '5000',
+    備考: '',
+  },
+]
+
+// マスタ照合の設定。取引先マスタの取引先コードを、サンプルデータの「取引先コード」列で照合する
+const mapperMatchingSettingDefs: MapperMatchingSettingDef[] = [
+  { name: samplePartnersMapperDef.name, path: 'code', settings: [{ column: '取引先コード' }] },
+]
+
+const Page = () => {
+  const params = useParams()
+  const navigate = useNavigate()
+  const [, height] = useWindowSize()
+  const [session, setSession] = useState<Session>()
+  const [saved, setSaved] = useState<SavedMappingDefinition>()
+
+  useEffect(() => {
+    createMappingSession().then(setSession)
+  }, [])
+
+  const onSaved = (result: SavedMappingDefinition) => {
+    // result.code が定義 ID。取込 API の code に渡す値として保存する想定
+    console.log(result)
+    setSaved(result)
+  }
+
+  const onCancel = () => navigate('../gallery')
+
+  if (!params.layoutId) return <></>
+  if (!session) return <Loading />
+  return (
+    <>
+      {saved && (
+        <p className="mapping-saved">
+          保存しました。定義 ID（取込 API の code）: {saved.code}（version {saved.version}）
+        </p>
+      )}
+      <DataTravelerMapping
+        session={session}
+        application={APPLICATION}
+        schema={SCHEMA}
+        layoutId={Number(params.layoutId)}
+        sampleData={sampleData}
+        mapperDefs={[samplePartnersMapperDef]}
+        binderDefs={[sampleCompanyMapperDef]}
+        mapperMatchingSettingDefs={mapperMatchingSettingDefs}
+        onSaved={onSaved}
+        onCancel={onCancel}
+        height={height - HEIGHT_OFFSET - (saved ? 40 : 0)}
+        customStyles={customStyles}
+      />
+    </>
+  )
+}
+
+export default Page
