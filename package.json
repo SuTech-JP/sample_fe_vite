@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@sutech_jp/datatraveler-react-client": "0.1.37",
+    "@sutech_jp/datatraveler-react-client": "0.1.38",
     "@sutech_jp/raas-react-client": "0.1.26",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
