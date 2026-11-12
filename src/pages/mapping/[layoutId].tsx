@@ -6,7 +6,7 @@ import {
   Session,
 } from '@sutech_jp/datatraveler-react-client'
 import { useEffect, useState } from 'react'
-import { createMappingSession } from '../../api'
+import { MockCompany, MockPartner, createMappingSession, loadMockCompany, loadMockPartners } from '../../api'
 import { useNavigate, useParams } from 'react-router-dom'
 import { APPLICATION, HEIGHT_OFFSET, SCHEMA } from '../../constants'
 import { useWindowSize } from '../../hooks/useWindowSize'
@@ -55,9 +55,14 @@ const Page = () => {
   const [, height] = useWindowSize()
   const [session, setSession] = useState<Session>()
   const [saved, setSaved] = useState<SavedMappingDefinition>()
+  // プレビューの変換に使うマスタの値（取込ページと同じ mapper / binder）
+  const [partners, setPartners] = useState<MockPartner[]>()
+  const [company, setCompany] = useState<MockCompany>()
 
   useEffect(() => {
     createMappingSession().then(setSession)
+    loadMockPartners().then(setPartners)
+    loadMockCompany().then(setCompany)
   }, [])
 
   const onSaved = (result: SavedMappingDefinition) => {
@@ -69,7 +74,7 @@ const Page = () => {
   const onCancel = () => navigate('../gallery')
 
   if (!params.layoutId) return <></>
-  if (!session) return <Loading />
+  if (!session || !partners || !company) return <Loading />
   return (
     <>
       {saved && (
@@ -83,11 +88,15 @@ const Page = () => {
         schema={SCHEMA}
         layoutId={Number(params.layoutId)}
         sampleData={sampleData}
+        mapper={{ sample_partners: partners }}
+        binder={{ sample_company: company }}
         mapperDefs={[samplePartnersMapperDef]}
         binderDefs={[sampleCompanyMapperDef]}
         mapperMatchingSettingDefs={mapperMatchingSettingDefs}
         onSaved={onSaved}
         onCancel={onCancel}
+        // 保存していない変更があるときの離脱確認に使う想定（サンプルではログに出すだけ）
+        onChangeOperating={(operating) => console.log('operating', operating)}
         height={height - HEIGHT_OFFSET - (saved ? 40 : 0)}
         customStyles={customStyles}
       />
