@@ -54,7 +54,6 @@ const Page = () => {
   const navigate = useNavigate()
   const [, height] = useWindowSize()
   const [session, setSession] = useState<Session>()
-  const [saved, setSaved] = useState<SavedMappingDefinition>()
   // プレビューの変換に使うマスタの値（取込ページと同じ mapper / binder）
   const [partners, setPartners] = useState<MockPartner[]>()
   const [company, setCompany] = useState<MockCompany>()
@@ -66,9 +65,8 @@ const Page = () => {
   }, [])
 
   const onSaved = (result: SavedMappingDefinition) => {
-    // result.code が定義 ID。取込 API の code に渡す値として保存する想定
+    // result.code が定義 ID。取込 API の code に渡す値として保存する想定（保存したことは画面がトーストで知らせる）
     console.log(result)
-    setSaved(result)
   }
 
   const onCancel = () => navigate('../gallery')
@@ -76,31 +74,24 @@ const Page = () => {
   if (!params.layoutId) return <></>
   if (!session || !partners || !company) return <Loading />
   return (
-    <>
-      {saved && (
-        <p className="mapping-saved">
-          保存しました。定義 ID（取込 API の code）: {saved.code}（version {saved.version}）
-        </p>
-      )}
-      <DataTravelerMapping
-        session={session}
-        application={APPLICATION}
-        schema={SCHEMA}
-        layoutId={Number(params.layoutId)}
-        sampleData={sampleData}
-        mapper={{ sample_partners: partners }}
-        binder={{ sample_company: company }}
-        mapperDefs={[samplePartnersMapperDef]}
-        binderDefs={[sampleCompanyMapperDef]}
-        mapperMatchingSettingDefs={mapperMatchingSettingDefs}
-        onSaved={onSaved}
-        onCancel={onCancel}
-        // 保存していない変更があるときの離脱確認に使う想定（サンプルではログに出すだけ）
-        onChangeOperating={(operating) => console.log('operating', operating)}
-        height={height - HEIGHT_OFFSET - (saved ? 40 : 0)}
-        customStyles={customStyles}
-      />
-    </>
+    <DataTravelerMapping
+      session={session}
+      application={APPLICATION}
+      schema={SCHEMA}
+      layoutId={Number(params.layoutId)}
+      sampleData={sampleData}
+      mapper={{ sample_partners: partners }}
+      binder={{ sample_company: company }}
+      mapperDefs={[samplePartnersMapperDef]}
+      binderDefs={[sampleCompanyMapperDef]}
+      mapperMatchingSettingDefs={mapperMatchingSettingDefs}
+      onSaved={onSaved}
+      onCancel={onCancel}
+      // 保存していない変更があるときの離脱確認に使う想定（サンプルではログに出すだけ）
+      onChangeOperating={(operating) => console.log('operating', operating)}
+      height={height - HEIGHT_OFFSET}
+      customStyles={customStyles}
+    />
   )
 }
 
